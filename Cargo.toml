@@ -1,0 +1,25 @@
+[package]
+name    = "os-watchdog"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "os-watchdog"
+path = "src/main.rs"
+
+[dependencies]
+tokio        = { version = "1", features = ["full"] }
+serde        = { version = "1", features = ["derive"] }
+serde_json   = "1"
+tracing      = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+sha2         = "0.10"          # binary integrity hashing
+hex          = "0.4"           # hash hex encoding
+procfs       = "0.16"          # /proc parsing
+nix          = { version = "0.27", features = ["process", "signal", "ptrace"] }
+tokio-unix-sock = { version = "0.1", package = "tokio" }  # unix socket to heal-brain
+libc         = "0.2"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
+tempfile = "3"
